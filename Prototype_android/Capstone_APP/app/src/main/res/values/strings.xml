@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Capstone_APP</string>
+    <!-- 메인화면 string-->
+    <string name="main_date">0000년 00월 00일 0요일</string>
+    <string name="history">-----------</string>
+    <string name="who">당신은 오늘 누구였나요?</string>
+    <string name="go_write">일기 작성하러 가기</string>
+
+    <!--Android Manifest-->
+    <string name="dic_365_mani">365 사전</string>
+    <string name="dic_per_mani">인물 사전</string>
+    <string name="select_per_mani">인물 선택</string>
+
+    <!--string names for 2_1 인물 선택-->
+    <string name="today_intro">당신은 오늘 누구였나요?</string>
+    <string name="today_person1_chk">인물1</string>
+    <string name="today_person2_chk">인물2</string>
+    <string name="today_person3_chk">인물3</string>
+    <string name="today_person4_chk">인물4</string>
+    <string name="today_person5_chk">인물5</string>
+    <string name="today_person1_Tview">__________</string>
+    <string name="today_person2_Tview">__________</string>
+    <string name="today_person3_Tview">__________</string>
+    <string name="today_person4_Tview">__________</string>
+    <string name="today_person5_Tview">__________</string>
+    <string name="today_person_btn">?</string>
+    <string name="today_done">선택 완료</string>
+    <string name="person_intro_popup">인물에 대한 좀 더 자세한 설명 중(…)</string>
+
+    <!--dictionary_365-->
+    <string name="dict_intro">과거의 오늘은…</string>
+    <string name="search_365">검색</string>
+
+
+    <!--dictionary_person-->
+    <string name="dic_person_hint">이름, 시대, 유형</string>
+</resources>
