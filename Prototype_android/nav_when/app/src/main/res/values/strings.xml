@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">nav_when</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <!--Android Manifest-->
+    <string name="dic_365_mani">365 사전</string>
+    <string name="dic_per_mani">인물 사전</string>
+    <string name="select_per_mani">인물 선택</string>
+
+    <!--string names for activity_person_select-->
+    <string name="today_intro">당신은 오늘 누구였나요?</string>
+    <string name="today_person1_chk">인물1</string>
+    <string name="today_person2_chk">인물2</string>
+    <string name="today_person3_chk">인물3</string>
+    <string name="today_person4_chk">인물4</string>
+    <string name="today_person5_chk">인물5</string>
+    <string name="today_person1_Tview">__________</string>
+    <string name="today_person2_Tview">__________</string>
+    <string name="today_person3_Tview">__________</string>
+    <string name="today_person4_Tview">__________</string>
+    <string name="today_person5_Tview">__________</string>
+    <string name="today_person_btn">?</string>
+    <string name="today_done">선택 완료</string>
+    <string name="person_intro_popup">인물에 대한 좀 더 자세한 설명 중(…)</string>
+
+
+    <!-- 메인화면 string-->
+    <string name="main_date">0000년 00월 00일 0요일</string>
+    <string name="history">-----------</string>
+    <string name="who">당신은 오늘 누구였나요?</string>
+    <string name="go_write_to">일기 작성하러 가기</string>
+
+    <!--dictionary_365-->
+    <string name="dict_intro">과거의 오늘은…</string>
+    <string name="search_365">검색</string>
+
+    <!--dictionary_person-->
+    <string name="dic_person_hint">이름, 시대, 유형</string>
+
+    <!--activity_write_diary-->
+    <string name="date_diary">XXXX. XX. XX</string>
+    <string name="person_name">김찰리</string>
+    <string name="person_tag">#TAG1 #TAG2 #TAG3</string>
+    <string name="write_box_hjnt">일기를 써보세요!</string>
+
+    <!--activity_view_diary-->
+    <string name="diary_imp">(저장 받아온 다이어리 내용 텍스트 파일..)</string>
+
+    <!--navigator (styles)-->
+    <string name="log_in_out">로그인/로그아웃</string>
+    <string name="settings">설정</string>
+    <string name="menu_write">일기작성</string>
+    <string name="menu_calendar">캘린더</string>
+    <string name="menu_per_dic">인물 사전</string>
+    <string name="menu_day_dic">365사전</string>
+
+    <!--Settings-->
+    <string name="sync">동기화</string>
+    <string name="delete_account">탈퇴</string>
+    <string name="copyrights">COPY RIGHTⓒ</string>
+    <string name="developer_note">개발자 노트</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
