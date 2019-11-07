@@ -36,6 +36,12 @@
         android:text="@string/developer_note"
         android:id="@+id/developer_note"
         android:background="@drawable/setting_button"/>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/language"
+        android:id="@+id/language"
+        android:background="@drawable/setting_button"/>
 
 </LinearLayout>
