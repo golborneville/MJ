@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_login"
-        android:name="com.example.nav_when.fragment.logInOut"
-        android:label="@string/log_in_out"
-        tools:layout="@layout/fragment_log_in_out" />
+        android:id="@+id/nav_search"
+        android:name="com.example.nav_when.fragment.search_view"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search_view" />
 
     <fragment
         android:id="@+id/nav_select"
@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/nav_cal"
-        android:name="com.example.nav_when.fragment.Calendar"
+        android:name="com.example.nav_when.fragment.Calendar_v_2"
         android:label="@string/menu_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/activity_calendar_v" />
 
     <fragment
         android:id="@+id/nav_per_dic"

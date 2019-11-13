@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_login, R.id.nav_select,
+                R.id.nav_home, R.id.nav_search, R.id.nav_select,
                 R.id.nav_cal, R.id.nav_per_dic, R.id.nav_365_dic)
                 .setDrawerLayout(drawer)
                 .build();
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

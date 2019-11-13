@@ -11,8 +11,15 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/log_in_out"
+        android:layout_marginTop="100dp"
+        android:id="@+id/logIn"
+        android:background="@drawable/setting_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/sync"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="25dp"
         android:id="@+id/sync"
         android:background="@drawable/setting_button"/>
     <Button

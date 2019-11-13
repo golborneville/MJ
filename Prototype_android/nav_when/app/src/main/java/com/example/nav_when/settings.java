@@ -9,11 +9,21 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class settings extends AppCompatActivity {
-    private Button sync, delete, copyright,note, lang;
+    private Button sync, delete, copyright,note, lang, account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+
+        account = (Button)findViewById(R.id.logIn);
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mint = new Intent(settings.this, logInOut_.class);
+                startActivity(mint);
+            }
+        });
 
         sync = (Button)findViewById(R.id.sync);
         sync.setOnClickListener(new View.OnClickListener() {

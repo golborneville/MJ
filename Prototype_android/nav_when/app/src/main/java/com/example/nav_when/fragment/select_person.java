@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nav_when.LanguageConv;
 import com.example.nav_when.MainActivity;
@@ -45,7 +46,8 @@ public class select_person extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_select_person, container, false);
-
+        nameSelect = "";
+        tagSelect="";
         q1 = (Button)root.findViewById(R.id.today_person1_btn);
         q2 = (Button)root.findViewById(R.id.today_person2_btn);
         q3 = (Button)root.findViewById(R.id.today_person3_btn);
@@ -90,6 +92,10 @@ public class select_person extends Fragment  {
                             mchkbox.get(i).setChecked(false);
                     }
                 }
+                else{
+                    nameSelect="";
+                    tagSelect="";
+                }
             }
         });
 
@@ -107,6 +113,10 @@ public class select_person extends Fragment  {
                             mchkbox.get(i).setChecked(false);
                     }
                 }
+                else{
+                    nameSelect="";
+                    tagSelect="";
+                }
             }
         });
         chk3.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +132,10 @@ public class select_person extends Fragment  {
                         else
                             mchkbox.get(i).setChecked(false);
                     }
+                }
+                else{
+                    nameSelect="";
+                    tagSelect="";
                 }
             }
         });
@@ -139,6 +153,10 @@ public class select_person extends Fragment  {
                             mchkbox.get(i).setChecked(false);
                     }
                 }
+                else{
+                    nameSelect="";
+                    tagSelect="";
+                }
             }
         });
         chk5.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +172,10 @@ public class select_person extends Fragment  {
                         else
                             mchkbox.get(i).setChecked(false);
                     }
+                }
+                else{
+                    nameSelect="";
+                    tagSelect="";
                 }
             }
         });
@@ -312,9 +334,13 @@ public class select_person extends Fragment  {
             @Override
             public void onClick(View v) {
                 Intent mint = new Intent(getActivity(), WriteDiary.class);
+                if(nameSelect.equals("") && tagSelect.equals("")){
+                    Toast.makeText(getContext(),"인물을 선택해주세요", Toast.LENGTH_SHORT).show();
+                }else{
                 mint.putExtra("person-name", nameSelect);
                 mint.putExtra("tag-name",tagSelect);
                 startActivity(mint);
+                }
             }
         });
         return root;
