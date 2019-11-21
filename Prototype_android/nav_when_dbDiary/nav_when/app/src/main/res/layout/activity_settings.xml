@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="13dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sync"
+        android:layout_marginTop="160dp"
+        android:id="@+id/sync"
+        android:background="@drawable/setting_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/delete_account"
+        android:id="@+id/delete_account"
+        android:background="@drawable/setting_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/copyrights"
+        android:id="@+id/copyrights"
+        android:background="@drawable/setting_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/developer_note"
+        android:id="@+id/developer_note"
+        android:background="@drawable/setting_button"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/language"
+        android:id="@+id/language"
+        android:background="@drawable/setting_button"/>
+
+</LinearLayout>
