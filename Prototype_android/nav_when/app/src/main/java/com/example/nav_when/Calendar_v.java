@@ -86,9 +86,8 @@ public class Calendar_v extends AppCompatActivity {
                 final String dateKey = ""+Year+Month+Day;
                 Log.i("shot_Day test", shot_Day + "");
                 materialCalendarView.clearSelection();
-                //Toast.makeText(getApplicationContext(), shot_Day , Toast.LENGTH_SHORT).show();
                 readData(dateKey, shot_Day);
-                //startActivity(mint);
+
             }
         });
     }

@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.nav_when.Calendar_v;
 import com.example.nav_when.DiaryData;
 import com.example.nav_when.FixDiary;
 import com.example.nav_when.R;
