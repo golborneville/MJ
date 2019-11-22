@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ViewDiary"></activity>
-        <activity android:name=".WriteDiary" />
         <activity android:name=".LanguageConv" />
         <activity android:name=".DevelopersNote" />
         <activity android:name=".CopyRight" />
@@ -27,12 +28,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".fragment.logInOut"
             android:label="@string/app_name">
         </activity>
         <activity android:name="logInOut_"
             android:label="@string/app_name">
         </activity>
+        <activity android:name=".Calendar_v"
+            android:label="@string/app_name">
+        </activity>
+        <activity android:name=".WriteDiary"
+            android:label="@string/app_name">
+        </activity>
+        <activity android:name=".FixDiary"
+            android:label="@string/app_name">
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

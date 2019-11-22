@@ -8,5 +8,6 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/developer_note"
     android:text="개발자 노트 ^^ 여기도 나중에 그냥 이쁘게 수정할것 어차피 우리 주저리만 적어두는 곳이라 "/>
 </androidx.constraintlayout.widget.ConstraintLayout>

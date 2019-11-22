@@ -5,11 +5,12 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.nav_when"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -17,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //여기가있어야 apk파일이 뽑힙니다
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
     }
 }
 
@@ -41,6 +46,27 @@ dependencies {
     implementation 'com.google.apis:google-api-services-drive:v2-rev105-1.17.0-rc'
     //calendar
     implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
-
+    //yougam
+    implementation 'androidx.media:media:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'pub.devrel:easypermissions:0.3.0'
+    implementation('com.google.api-client:google-api-client-android:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-calendar:v3-rev235-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0', {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    //여기 밑에 두개 implementation해야 뽑힙니다
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.2.0', {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    //firebase_database
+    //implementation 'com.google.firebase:firebase-firestore:21.3.0'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
 }
 apply plugin: 'com.google.gms.google-services'

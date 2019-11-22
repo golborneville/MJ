@@ -2,13 +2,7 @@ package com.example.nav_when;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.nav_when.R;
 
 //new import
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -17,6 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import android.content.Intent;
 import androidx.annotation.NonNull;
@@ -26,6 +21,14 @@ import androidx.annotation.Nullable;
 import android.util.Log;
 import android.widget.TextView;
 import com.google.android.gms.common.api.ApiException;
+//firebase
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+//import com.google.firebase.quickstart.auth.R;
+
+
 
 public class logInOut_ extends FragmentActivity  implements View.OnClickListener{
     SignInButton Google_Login;
@@ -34,7 +37,7 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
 
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
-    //private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +46,14 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
-
+        //private FirebaseAuth mAuth;// ...
+// Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         // [END configure_signin]
@@ -73,9 +79,11 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
         // [START on_start_sign_in]
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
+        //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        //(account);
         // [END on_start_sign_in]
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
     // [START onActivityResult]
     @Override
@@ -87,6 +95,15 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // ...
+            }
             handleSignInResult(task);
         }
     }
@@ -96,7 +113,7 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            updateUI(account);
+            //updateUI(account);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -140,7 +157,7 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
     }
     // [END revokeAccess]
 
-    private void updateUI(@Nullable GoogleSignInAccount account) {
+    private void updateUI(@Nullable FirebaseUser account) {
         if (account != null) {
             mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
 
@@ -168,5 +185,28 @@ public class logInOut_ extends FragmentActivity  implements View.OnClickListener
                 break;
         }
     }
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+
+                        // ...
+                    }
+                });
+    }
 }

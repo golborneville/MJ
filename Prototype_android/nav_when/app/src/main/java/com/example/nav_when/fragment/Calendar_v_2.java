@@ -1,5 +1,6 @@
 package com.example.nav_when.fragment;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -14,11 +15,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.nav_when.Calendar_v;
+import com.example.nav_when.DiaryData;
+import com.example.nav_when.FixDiary;
 import com.example.nav_when.R;
+import com.example.nav_when.ViewDiary;
 import com.example.nav_when.decorators.EventDecorator;
 import com.example.nav_when.decorators.OneDayDecorator;
 import com.example.nav_when.decorators.SaturdayDecorator;
 import com.example.nav_when.decorators.SundayDecorator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -36,7 +48,7 @@ public class Calendar_v_2 extends Fragment {
     private final OneDayDecorator oneDayDecorator = new OneDayDecorator();
     Cursor cursor;
     MaterialCalendarView materialCalendarView;
-
+    private DatabaseReference mReference;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
@@ -71,19 +83,64 @@ public class Calendar_v_2 extends Fragment {
                 Log.i("Year test", Year + "");
                 Log.i("Month test", Month + "");
                 Log.i("Day test", Day + "");
-
-                String shot_Day = Year + "," + Month + "," + Day;
-
+                final String shot_Day = Year + ". " + Month + ". " + Day;
+                final String dateKey = ""+Year+Month+Day;
                 Log.i("shot_Day test", shot_Day + "");
                 materialCalendarView.clearSelection();
-
-                Toast.makeText(getActivity(), shot_Day , Toast.LENGTH_SHORT).show();
+                readData(dateKey, shot_Day);
             }
         });
 
         return root;
     }
+    public String getUserUid(){
+        String Uid = null;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            Uid = user.getUid();
+        }else{
+            //힝
+        }
+        return Uid;
+    }
+    public void readData(final String dateKey, final String shot_Day){
+        mReference = FirebaseDatabase.getInstance().getReference();
+        mReference.child("diary").child(getUserUid()).child(dateKey).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.getValue(DiaryData.class)!=null){
+                            DiaryData data = dataSnapshot.getValue(DiaryData.class);
+                            Log.i("hah",data.date);
+                            Log.i("hah",data.mail);
+                            Log.i("hah",data.text);
+                            Intent mint = new Intent(getActivity(), ViewDiary.class);
+                            mint.putExtra("text", data.text);
+                            mint.putExtra("person", data.person);
+                            mint.putExtra("tag", data.tag);
+                            mint.putExtra("date", shot_Day);
+                            mint.putExtra("dateKey",dateKey);
+                            startActivity(mint);
+                        }else{
+                            Toast.makeText(getContext(), "작성된 일기가 없습니다." , Toast.LENGTH_SHORT).show();
+                            Intent mint = new Intent(getActivity(), FixDiary.class);
+                            //mint.putExtra("text", data.text);
+                            mint.putExtra("person", "no person");
+                            mint.putExtra("tag", "no tags");
+                            mint.putExtra("date", shot_Day);
+                            mint.putExtra("dateKey",dateKey);
 
+                            startActivity(mint);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("err", "getUser:onCancelled", databaseError.toException());
+                    }
+                }
+        );
+    }
     private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {
 
         String[] Time_Result;

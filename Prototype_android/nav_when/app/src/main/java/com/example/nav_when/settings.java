@@ -25,17 +25,6 @@ public class settings extends AppCompatActivity {
             }
         });
 
-        sync = (Button)findViewById(R.id.sync);
-        sync.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //WORKING TOTALLY FINE
-                //NEED IMPLEMENTATION
-                Toast.makeText(getApplicationContext(), "test for button ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
         copyright = (Button)findViewById(R.id.copyrights);
         copyright.setOnClickListener(new View.OnClickListener() {
             @Override

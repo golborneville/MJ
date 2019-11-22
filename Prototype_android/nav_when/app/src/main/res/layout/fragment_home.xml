@@ -14,14 +14,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/main_date"
                 android:textSize="25sp"
                 android:id="@+id/date_main"/>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dict_intro"
+                android:textSize="18sp"
+                android:layout_margin="20dp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -33,16 +39,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dict_intro"
-                android:textSize="18sp"
-                android:layout_margin="20dp"
+                android:text="@string/history"
+                android:textSize="20sp"
+                android:id="@+id/year_main"
+                android:layout_marginBottom="10dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/history"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:id="@+id/history_main"
+                android:gravity="center"
                 />
 
         </LinearLayout>
