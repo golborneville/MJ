@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".CopyRight">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="1. 한국역대인물종합정보시스템:\nTHE ACADEMY OF KOREAN STUDIES. All Rights Reserved\n\n2. 한국민족문화대백과서전:\nCOPYRIGHT the Academy of Korean Studies. All Right Reserved.\n\n3. 우리역사넷:\nCOPYRIGHT © NATIONAL INSTITUTE OF KOREAN HISTORY ALL RIGHT RESERVED
+"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

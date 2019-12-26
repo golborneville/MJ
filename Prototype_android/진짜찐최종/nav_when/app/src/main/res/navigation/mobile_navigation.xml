@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.nav_when.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.nav_when.fragment.search_view"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search_view" />
+
+    <fragment
+        android:id="@+id/nav_select"
+        android:name="com.example.nav_when.fragment.select_person"
+        android:label="@string/menu_write"
+        tools:layout="@layout/fragment_select_person" />
+
+    <fragment
+        android:id="@+id/nav_cal"
+        android:name="com.example.nav_when.fragment.Calendar_v_2"
+        android:label="@string/menu_calendar"
+        tools:layout="@layout/activity_calendar_v" />
+
+    <fragment
+        android:id="@+id/nav_per_dic"
+        android:name="com.example.nav_when.fragment.dict_person"
+        android:label="@string/menu_per_dic"
+        tools:layout="@layout/fragment_dict_person" />
+    <!--send > 365dic-->
+    <fragment
+        android:id="@+id/nav_365_dic"
+        android:name="com.example.nav_when.fragment.dict_365"
+        android:label="@string/menu_day_dic"
+        tools:layout="@layout/fragment_dict_365" />
+</navigation>
